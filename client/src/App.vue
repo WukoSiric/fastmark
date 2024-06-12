@@ -27,8 +27,8 @@ export default {
 </script>
 
 <template>
-  <div class="bg-orange-100">
-    <div class="grid grid-cols-2 gap-2 p-8">
+  <div class="h-screen bg-orange-100">
+    <div class="grid h-2/3 grid-cols-2 gap-2 overflow-scroll p-8">
       <textarea
         v-model="userInput"
         @input="updatePreview"
