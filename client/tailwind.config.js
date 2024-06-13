@@ -17,9 +17,9 @@ export default {
           sidebar: 'hsl(var(--sidebar-bg) / <alpha-value>)',
         },
         txt: {
-          editor: 'hsl(var(--editor-txt) / <alpha-value>)',
-          detail: 'hsl(var(--detail-txt) / <alpha-value>)',
-          note: 'hsl(var(--note-txt) / <alpha-value>)',
+          editor: 'var(--editor-txt)',
+          detail: 'var(--detail-txt)',
+          note: 'var(--note-txt)',
         },
       },
     },

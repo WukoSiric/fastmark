@@ -1,12 +1,17 @@
 <template>
-  <NavBar />
   <div class="h-screen">
-    <textarea
-      v-model="userInput"
-      @input="updatePreview"
-      class="min-h-2/3 bg-background-main resize-none rounded-lg bg-neutral-600 p-2 font-mono text-white"
-    ></textarea>
-    <div class="prose font-serif" v-html="parsed"></div>
+    <NavBar />
+    <div class="grid h-5/6 w-full grid-cols-2 gap-5 p-6">
+      <textarea
+        v-model="userInput"
+        @input="updatePreview"
+        class="text-txt-editor bg-background-main h-full w-full resize-none overflow-y-scroll rounded-2xl p-2 font-mono active:border-none"
+      ></textarea>
+      <div
+        class="bg-background-main prose-blockquote:text-txt-editor prose-strong:text-txt-editor prose-headings:text-txt-editor text-txt-editor prose box-border h-full min-w-full overflow-y-scroll rounded-2xl p-4 font-serif"
+        v-html="parsed"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -24,6 +29,9 @@ export default {
       parsed: '',
       userInput: '',
     }
+  },
+  mounted() {
+    document.documentElement.setAttribute('data-theme', 'dark')
   },
   methods: {
     async sendRequest() {
@@ -43,34 +51,11 @@ export default {
 </script>
 
 <style>
-/* Media backend */
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
+  background-color: var(--main-bg);
+  background-image: var(--background-image);
+  background-blend-mode: var(--blend-mode);
   background-repeat: repeat;
-  background-blend-mode: normal;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: rgb(17, 17, 17);
-    background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
-    background-blend-mode: overlay;
-    background-repeat: repeat;
-  }
-}
-
-body[data-theme='dark'] {
-  background-color: rgb(17, 17, 17);
-  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
-  background-blend-mode: overlay;
-  background-repeat: repeat;
-}
-
-body[data-theme='light'] {
-  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
-  background-blend-mode: normal;
-  background-repeat: repeat;
+  background-size: 40%;
 }
 </style>

@@ -11,16 +11,8 @@
     --editor-txt: #161616;
     --detail-txt: #000000;
     --note-txt: #393939;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root { 
-      --main-bg: #181818; 
-      --sidebar-bg: #ADADAD;
-      --editor-txt: #FFFFFF;
-      --detail-txt: #D6D6D6;
-      --note-txt: #666666;
-    }
+    --background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg); 
+    --blend-mode: normal; 
   }
 
   :root[data-theme='dark'] {
@@ -29,6 +21,8 @@
     --editor-txt: #FFFFFF;
     --detail-txt: #D6D6D6;
     --note-txt: #666666;
+    --blend-mode: overlay; 
+
   }
 
   :root[data-theme='light'] {
@@ -37,5 +31,6 @@
     --editor-txt: #161616;
     --detail-txt: #000000;
     --note-txt: #393939;
+    --blend-mode: normal; 
   }
 }

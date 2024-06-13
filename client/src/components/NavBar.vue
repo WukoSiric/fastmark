@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-background-main sticky top-0 z-50 box-border flex flex-col items-center justify-between gap-4 px-5 py-3 sm:px-16 md:flex-row lg:px-44"
+    class="bg-background-main top-0 z-50 box-border flex flex-col items-center justify-between gap-4 px-5 py-3 sm:px-16 md:flex-row lg:px-44"
   >
     <div class="nav-header flex w-full flex-row justify-between">
       <div class="logo text-accent text-brand-main select-none text-2xl font-extrabold">
@@ -66,10 +66,11 @@ export default {
       this.expanded = false
     },
     toggleDarkMode() {
-      document.documentElement.setAttribute(
-        'data-theme',
-        document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark',
-      )
+      if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light')
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark')
+      }
     },
   },
 }
