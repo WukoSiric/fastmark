@@ -41,7 +41,6 @@
 <script>
 import MenuIcon from 'vue-material-design-icons/Menu.vue'
 import MenuCloseIcon from 'vue-material-design-icons/MenuClose.vue'
-import TabPlusIcon from 'vue-material-design-icons/TabPlus.vue'
 import ThemeLightDarkIcon from 'vue-material-design-icons/ThemeLightDark.vue'
 import AccountBoxIcon from 'vue-material-design-icons/AccountBox.vue'
 
@@ -49,7 +48,6 @@ export default {
   components: {
     MenuIcon,
     MenuCloseIcon,
-    TabPlusIcon,
     ThemeLightDarkIcon,
     AccountBoxIcon,
   },
