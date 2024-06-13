@@ -1,7 +1,23 @@
+<template>
+  <NavBar />
+  <div class="h-screen">
+    <textarea
+      v-model="userInput"
+      @input="updatePreview"
+      class="min-h-2/3 bg-background-main resize-none rounded-lg bg-neutral-600 p-2 font-mono text-white"
+    ></textarea>
+    <div class="prose font-serif" v-html="parsed"></div>
+  </div>
+</template>
+
 <script>
 import { marked } from 'marked'
+import NavBar from './components/NavBar.vue'
 
 export default {
+  components: {
+    NavBar,
+  },
   data() {
     return {
       content: '',
@@ -26,29 +42,35 @@ export default {
 }
 </script>
 
-<template>
-  <div class="h-screen bg-orange-100">
-    <div class="grid h-2/3 grid-cols-2 gap-2 overflow-scroll p-8">
-      <textarea
-        v-model="userInput"
-        @input="updatePreview"
-        class="min-h-96 rounded-lg bg-neutral-600 p-2 font-mono text-white"
-      ></textarea>
-      <div class="prose font-serif" v-html="parsed"></div>
-    </div>
-    <div class="grid place-content-center gap-3">
-      <h1 class="flex text-5xl font-bold">Hello world</h1>
-      <button @click="sendRequest" class="rounded-lg bg-blue-500 p-2 font-medium text-amber-100">
-        Send Request
-      </button>
-      <div class="prose" v-html="content"></div>
-    </div>
-  </div>
-</template>
-
 <style>
+/* Media backend */
 body {
   margin: 0;
   padding: 0;
+  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
+  background-repeat: repeat;
+  background-blend-mode: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgb(17, 17, 17);
+    background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
+    background-blend-mode: overlay;
+    background-repeat: repeat;
+  }
+}
+
+body[data-theme='dark'] {
+  background-color: rgb(17, 17, 17);
+  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
+  background-blend-mode: overlay;
+  background-repeat: repeat;
+}
+
+body[data-theme='light'] {
+  background-image: url(https://img.freepik.com/free-vector/hand-drawn-blue-lined-paper-background_23-2151157575.jpg);
+  background-blend-mode: normal;
+  background-repeat: repeat;
 }
 </style>
