@@ -12,9 +12,9 @@ CORS(app, resources={r'/*': {'origins': '*'}}) # Enable CORS
 config = dotenv_values(".env")
 mongo = PyMongo(app, uri=config["DB_URI"])
 
-@app.route('/login', methods=['GET'])
-def login(): 
-    result = mongo.db.users.find_one_or_404({"username" : "Luke"})
+@app.route('/login/<username>', methods=['GET'])
+def login(username): 
+    result = mongo.db.users.find_one_or_404({"username" : username})
     result.pop("_id")
     return result
 
