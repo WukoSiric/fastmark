@@ -1,12 +1,22 @@
 from flask import Flask, jsonify, render_template_string, render_template
 from flask_cors import CORS
+from dotenv import dotenv_values
+from flask_pymongo import PyMongo 
+
 
 # instantiate the app
 app = Flask(__name__)
 app.config.from_object(__name__)
+CORS(app, resources={r'/*': {'origins': '*'}}) # Enable CORS
 
-# enable CORS
-CORS(app, resources={r'/*': {'origins': '*'}})
+config = dotenv_values(".env")
+mongo = PyMongo(app, uri=config["DB_URI"])
+
+@app.route('/login', methods=['GET'])
+def login(): 
+    result = mongo.db.users.find_one_or_404({"username" : "Luke"})
+    result.pop("_id")
+    return result
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
