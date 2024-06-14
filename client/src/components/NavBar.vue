@@ -1,11 +1,11 @@
 <template>
   <div
-    class="bg-background-main top-0 z-50 box-border flex flex-col items-center justify-between gap-4 px-5 py-3 sm:px-16 md:flex-row lg:px-44"
+    class="top-0 z-50 box-border flex flex-col items-center justify-between gap-4 bg-background-main px-5 py-3 sm:px-16 md:flex-row lg:px-44"
   >
     <div class="nav-header flex w-full flex-row justify-between">
-      <div class="logo text-accent text-brand-main select-none text-2xl font-extrabold">
+      <RouterLink to="/" class="logo text-accent select-none text-2xl font-extrabold text-brand-main">
         FastMark
-      </div>
+      </RouterLink to="/">
       <MenuIcon
         fillColor="white"
         class="hover:cursor-pointer md:hidden"
@@ -21,15 +21,15 @@
     </div>
     <ul
       :class="expanded ? 'flex' : 'hidden'"
-      class="text-brand-main flex-col items-center gap-1 text-lg font-bold md:flex md:flex-row md:justify-between md:space-x-4"
+      class="flex-col items-center gap-1 text-lg font-bold text-brand-main md:flex md:flex-row md:justify-between md:space-x-4"
     >
-      <li
-        class="bg-brand-main text-background-main select-none rounded-md px-2 hover:cursor-pointer"
+      <RouterLink
+        to="/editor"
+        class="select-none rounded-md bg-brand-main px-2 text-background-main hover:cursor-pointer"
       >
-        +New
-      </li>
+        Editor
+      </RouterLink>
       <li class="select-none hover:cursor-pointer">Collection</li>
-      <li class="select-none hover:cursor-pointer">About</li>
       <li @click="toggleDarkMode" class="select-none hover:cursor-pointer">
         <ThemeLightDarkIcon />
       </li>
