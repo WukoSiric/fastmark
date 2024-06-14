@@ -1,19 +1,19 @@
 <template>
   <div
-    class="top-0 z-50 box-border flex flex-col items-center justify-between gap-4 bg-background-main px-5 py-3 sm:px-16 md:flex-row lg:px-44"
+    class="sticky top-0 flex flex-col items-center justify-between gap-4 bg-background-main px-5 py-3 sm:px-16 md:flex-row lg:px-44"
   >
     <div class="nav-header flex w-full flex-row justify-between">
       <RouterLink to="/" class="logo text-accent select-none text-2xl font-extrabold text-brand-main">
         FastMark
       </RouterLink to="/">
       <MenuIcon
-        fillColor="white"
+        fillColor="var(--blue-brand)"
         class="hover:cursor-pointer md:hidden"
         v-if="!expanded"
         @click="openMenu"
       />
       <MenuCloseIcon
-        fillColor="white"
+        fillColor="var(--blue-brand)"
         class="hover:cursor-pointer md:hidden"
         v-else
         @click="closeMenu"
