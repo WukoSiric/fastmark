@@ -22,9 +22,6 @@ export default {
       userInput: '',
     }
   },
-  mounted() {
-    document.documentElement.setAttribute('data-theme', 'light')
-  },
   methods: {
     async sendRequest() {
       const response = await fetch('http://localhost:5001/markdown')
