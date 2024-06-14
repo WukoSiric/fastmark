@@ -5,10 +5,10 @@
       <textarea
         v-model="userInput"
         @input="updatePreview"
-        class="text-txt-editor bg-background-main h-full w-full resize-none overflow-y-scroll rounded-2xl p-2 font-mono active:border-none"
+        class="h-full w-full resize-none overflow-y-scroll rounded-2xl bg-background-main p-2 font-mono text-txt-editor shadow-xl active:border-none"
       ></textarea>
       <div
-        class="bg-background-main prose-blockquote:text-txt-editor prose-strong:text-txt-editor prose-headings:text-txt-editor text-txt-editor prose box-border h-full min-w-full overflow-y-scroll rounded-2xl p-4 font-serif"
+        class="prose box-border h-full min-w-full overflow-y-scroll rounded-2xl bg-background-main p-4 font-serif text-txt-editor shadow-xl prose-headings:text-txt-editor prose-blockquote:text-txt-editor prose-strong:text-txt-editor"
         v-html="parsed"
       ></div>
     </div>
