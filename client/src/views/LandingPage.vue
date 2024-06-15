@@ -1,13 +1,13 @@
 <template>
   <div class="background h-full">
     <div class="h-full backdrop-blur-sm">
-      <div class="grid place-items-start gap-2 p-60">
+      <div class="grid place-items-start gap-2 p-10 md:p-32 xl:p-60">
         <h1
           class="logo text-accent select-none rounded-2xl bg-background-main p-2 text-2xl font-extrabold text-brand-main drop-shadow-lg"
         >
           FastMark
         </h1>
-        <p class="w-1/2 text-4xl font-light text-slate-50 drop-shadow-lg">
+        <p class="w-full text-4xl font-light text-slate-50 drop-shadow-lg md:w-1/2">
           A quick and convenient markdown editor to match all of your needs! Start creating
           immediately or sign in to sync your documents.
         </p>
