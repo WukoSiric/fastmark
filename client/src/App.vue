@@ -13,7 +13,7 @@ export default {
     NavBar,
   },
   mounted() {
-    document.documentElement.setAttribute('data-theme', 'light')
+    document.documentElement.setAttribute('data-theme', 'dark')
   },
 }
 </script>
