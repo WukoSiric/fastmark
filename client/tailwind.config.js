@@ -14,7 +14,7 @@ export default {
         },
         background: {
           main: 'var(--main-bg)',
-          sidebar: 'hsl(var(--sidebar-bg) / <alpha-value>)',
+          sidebar: 'var(--sidebar-bg)',
         },
         txt: {
           editor: 'var(--editor-txt)',
