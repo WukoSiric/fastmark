@@ -75,6 +75,17 @@ export default {
   },
   methods: {
     async register() {
+      if (this.username === '' || this.password === '') {
+        console.log('Fill out all from elements')
+        return
+      }
+
+      if (this.password != this.confirmPassword) {
+        console.log('Passwords do not match')
+        console.log(this.password + this.confirmPassword)
+        return
+      }
+
       const response = await fetch('http://localhost:5001/register', {
         method: 'POST',
         headers: {
