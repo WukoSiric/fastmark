@@ -74,8 +74,25 @@ export default {
     }
   },
   methods: {
-    register() {
-      console.log('Registering...')
+    async register() {
+      const response = await fetch('http://localhost:5001/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: this.username,
+          password: this.password,
+        }),
+      })
+
+      if (response.ok) {
+        console.log('Account created')
+        console.log(response.text)
+      } else {
+        console.log('Response failed')
+        console.log(response.text)
+      }
     },
     login() {
       console.log('Logging in...')
