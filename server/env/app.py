@@ -26,7 +26,9 @@ def register():
     content = request.json
     username = content.get('username')
     password = content.get('password')
-    return "Created user ", 201
+    newUser = {'username': username, 'password': password}
+    result = mongo.db.users.insert_one(newUser)
+    return "Created user", 201
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
