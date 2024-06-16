@@ -1,7 +1,7 @@
 <template>
   <div class="background h-full">
     <div class="h-full backdrop-blur-sm">
-      <div class="grid place-items-start gap-2 p-10 md:p-32 xl:p-60">
+      <div class="grid place-items-start gap-2 p-10 xl:px-32">
         <h1
           class="logo text-accent select-none rounded-2xl bg-background-main p-2 text-2xl font-extrabold text-brand-main drop-shadow-lg"
         >
