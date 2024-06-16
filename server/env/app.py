@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template_string, render_template
+from flask import Flask, jsonify, render_template_string, render_template, request
 from flask_cors import CORS
 from dotenv import dotenv_values
 from flask_pymongo import PyMongo 
@@ -17,6 +17,16 @@ def login(username):
     result = mongo.db.users.find_one_or_404({"username" : username})
     result.pop("_id")
     return result
+
+@app.route('/register', methods=['POST'])
+def register(): 
+    if request.method != 'POST':
+        return 400
+    
+    content = request.json
+    username = content.get('username')
+    password = content.get('password')
+    return "Created user ", 201
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
