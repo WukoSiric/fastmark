@@ -1,8 +1,9 @@
-from flask import Flask, jsonify, render_template_string, render_template, request, session
+from flask import Flask, jsonify, render_template_string, render_template, request, session, make_response
 from flask_cors import CORS
 from dotenv import dotenv_values
 from flask_pymongo import PyMongo 
 from datetime import timedelta
+from uuid import uuid4
 
 
 # instantiate the app
@@ -32,9 +33,14 @@ def login():
 
     result = mongo.db.users.find_one_or_404({"username" : received_username})
     if result["password"] == received_password:
-        # Session data
+        session_id = str(uuid4())
+        
         session["user"] = received_username
-        return jsonify({'message': 'Login successful'}), 200
+        session["session_id"] = session_id
+
+        response = make_response(jsonify({'message': 'Login successful'}))
+        response.set_cookie("session_id", session_id)
+        return response, 200
     else: 
         return jsonify({'message': 'Invalid credentials'}), 401
     
