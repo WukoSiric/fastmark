@@ -12,12 +12,6 @@ CORS(app, resources={r'/*': {'origins': '*'}}) # Enable CORS
 config = dotenv_values(".env")
 mongo = PyMongo(app, uri=config["DB_URI"])
 
-@app.route('/login/<username>', methods=['GET'])
-def login(username): 
-    result = mongo.db.users.find_one_or_404({"username" : username})
-    result.pop("_id")
-    return result
-
 @app.route('/register', methods=['POST'])
 def register(): 
     if request.method != 'POST':
@@ -29,6 +23,21 @@ def register():
     newUser = {'username': username, 'password': password}
     result = mongo.db.users.insert_one(newUser)
     return "Created user", 201
+
+@app.route('/login', methods=['POST'])
+def login(): 
+    if request.method != 'POST':
+        return 400
+
+    content = request.json
+    received_username = content.get('username')
+    received_password = content.get('password')
+
+    result = mongo.db.users.find_one_or_404({"username" : received_username})
+    if result["password"] == received_password:
+        return "Login successful", 200
+    else: 
+        return "Login failed", 401
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
