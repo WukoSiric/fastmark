@@ -105,8 +105,25 @@ export default {
         console.log(response.text)
       }
     },
-    login() {
-      console.log('Logging in...')
+    async login() {
+      const response = await fetch('http://localhost:5001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: this.loginUsername,
+          password: this.loginPassword,
+        }),
+      })
+
+      const data = await response.json()
+      if (response.ok) {
+        console.log('login succeeded')
+        console.log(data)
+      } else {
+        console.log('Login failed. Try again')
+      }
     },
   },
 }
