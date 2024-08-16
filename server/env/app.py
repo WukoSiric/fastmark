@@ -13,6 +13,18 @@ app.secret_key = "randomstring"
 CORS(app) # Enable CORS
 mongo = PyMongo(app, uri=config["DB_URI"])
 
+@app.route('/createDocument', methods=['POST'])
+@cross_origin(supports_credentials=True)
+def createDocument(): 
+    if 'user' not in session: 
+        return jsonify({'message': 'Unauthorized'}), 401
+    req = request.json
+    content = req.get('content')
+    title = req.get('title')
+    document = {'title': title, 'content': content, 'owner': session.get('user')}
+    mongo.db.documents.insert_one(document)
+    return jsonify({'message': 'Document created'}), 201
+
 @app.route('/register', methods=['POST'])
 def register(): 
     content = request.json
