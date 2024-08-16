@@ -1,4 +1,5 @@
 <template>
+  <button @click="getsessiondata" class="bg-black text-blue-200">Session Data</button>
   <div class="mt-8 grid h-full grid-cols-1 items-start gap-4 px-48 md:mt-24 md:grid-cols-2">
     <div
       class="grid w-full place-items-center gap-4 rounded-xl bg-background-sidebar py-12 drop-shadow-2xl"
@@ -108,6 +109,7 @@ export default {
     async login() {
       const response = await fetch('http://localhost:5001/login', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -123,6 +125,18 @@ export default {
         console.log(data)
       } else {
         console.log('Login failed. Try again')
+      }
+    },
+    async getsessiondata() {
+      const response = await fetch('http://localhost:5001/sessiondata', {
+        method: 'GET',
+        credentials: 'include',
+      })
+      const data = await response.json()
+      if (response.ok) {
+        console.log(data)
+      } else {
+        console.log('Failed to get session data')
       }
     },
   },
