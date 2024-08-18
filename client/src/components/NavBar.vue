@@ -29,7 +29,8 @@
       >
         Editor
       </RouterLink>
-      <li class="select-none hover:cursor-pointer">Collection</li>
+      <li class="select-none hover:cursor-pointer">
+        <RouterLink to="/collection">Collection</RouterLink></li>
       <li @click="toggleDarkMode" class="select-none hover:cursor-pointer">
         <ThemeLightDarkIcon />
       </li>

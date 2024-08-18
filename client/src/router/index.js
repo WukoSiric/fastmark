@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LandingPage from '@/views/LandingPage.vue'
 import EditorPage from '@/views/EditorPage.vue'
 import AuthPage from '@/views/AuthPage.vue'
+import CollectionPage from '@/views/CollectionPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,6 +18,10 @@ const router = createRouter({
     {
       path: '/auth',
       component: AuthPage,
+    },
+    {
+      path: '/collection',
+      component: CollectionPage,
     },
   ],
 })
