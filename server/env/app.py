@@ -25,6 +25,16 @@ def createDocument():
     mongo.db.documents.insert_one(document)
     return jsonify({'message': 'Document created'}), 201
 
+@app.route('/viewDocuments', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def viewDocuments(): 
+    if 'user' not in session: 
+        return jsonify({'message': 'Unauthorized'}), 401
+    userDocuments = mongo.db.documents.find({'owner': session['user']}, projection = {"_id": False})
+    userDocList = list(userDocuments)
+    print(userDocList)
+    return jsonify(userDocList), 200
+
 @app.route('/register', methods=['POST'])
 def register(): 
     content = request.json
