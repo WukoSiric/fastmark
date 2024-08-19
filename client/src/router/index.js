@@ -16,6 +16,10 @@ const router = createRouter({
       component: EditorPage,
     },
     {
+      path: '/editor/:id',
+      component: EditorPage,
+    },
+    {
       path: '/auth',
       component: AuthPage,
     },
