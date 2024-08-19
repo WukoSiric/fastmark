@@ -1,21 +1,22 @@
 <template>
-  <div class="grid place-self-center">
-    <button class="bg-slate-600 p-4 text-3xl font-bold text-white" @click="getDocuments">
-      Get Documents
-    </button>
-  </div>
-  <div v-for="document in documents" :key="document._id">
-    <div
-      class="grid place-items-center gap-4 rounded-xl bg-background-sidebar py-12 drop-shadow-2xl"
-    >
-      <h1 class="text-4xl font-bold text-brand-main drop-shadow-md">{{ document.title }}</h1>
-      <p class="text-txt-editor">{{ document.content }}</p>
-    </div>
+  <div class="grid grid-cols-3 content-center justify-items-center gap-8 gap-y-10 py-4 lg:px-24">
+    <DocumentPreview
+      v-for="document in documents"
+      :key="document._id"
+      class="col-span-1"
+      :title="document.title"
+      :content="document.content"
+    />
   </div>
 </template>
 
 <script>
+import DocumentPreview from '@/components/DocumentPreview.vue'
+
 export default {
+  components: {
+    DocumentPreview,
+  },
   data() {
     return {
       documents: {},
