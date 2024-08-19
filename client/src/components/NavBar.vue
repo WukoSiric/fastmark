@@ -3,9 +3,12 @@
     class="sticky top-0 flex flex-col items-center justify-between gap-4 bg-background-main px-5 py-3 sm:px-16 md:flex-row lg:px-44"
   >
     <div class="nav-header flex w-full flex-row justify-between">
-      <RouterLink to="/" class="logo text-accent select-none text-2xl font-extrabold text-brand-main">
+      <RouterLink
+        to="/"
+        class="logo text-accent select-none text-2xl font-extrabold text-brand-main"
+      >
         FastMark
-      </RouterLink to="/">
+      </RouterLink>
       <MenuIcon
         fillColor="var(--blue-brand)"
         class="hover:cursor-pointer md:hidden"
@@ -30,11 +33,14 @@
         Editor
       </RouterLink>
       <li class="select-none hover:cursor-pointer">
-        <RouterLink to="/collection">Collection</RouterLink></li>
+        <RouterLink to="/collection">Collection</RouterLink>
+      </li>
       <li @click="toggleDarkMode" class="select-none hover:cursor-pointer">
         <ThemeLightDarkIcon />
       </li>
-      <li class="select-none hover:cursor-pointer"><AccountBoxIcon /></li>
+      <li class="select-none hover:cursor-pointer">
+        <RouterLink to="/auth"><AccountBoxIcon /></RouterLink>
+      </li>
     </ul>
   </div>
 </template>
