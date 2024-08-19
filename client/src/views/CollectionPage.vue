@@ -32,7 +32,6 @@ export default {
 
       const data = await response.json()
       if (response.ok) {
-        console.log(data)
         this.documents = data
       } else {
         console.log(data)
