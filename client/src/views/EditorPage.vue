@@ -54,6 +54,26 @@ export default {
     updatePreview() {
       this.parsed = marked(this.userInput)
     },
+    async getDocument() {
+      const response = await fetch('http://localhost:5001/getDocument/' + this.$route.params.id, {
+        method: 'GET',
+        credentials: 'include',
+      })
+
+      const data = await response.json()
+      if (response.ok) {
+        this.userInput = data['content']
+        this.title = data['title']
+        this.updatePreview()
+      } else {
+        console.log('Could not retrieve document')
+      }
+    },
+  },
+  mounted() {
+    if (this.$route.params.id) {
+      this.getDocument()
+    }
   },
 }
 </script>
