@@ -33,6 +33,10 @@ export default {
   },
   methods: {
     async createDocument() {
+      if (this.$route.params.id) {
+        return
+      }
+
       const response = await fetch('http://localhost:5001/createDocument', {
         method: 'POST',
         credentials: 'include',
@@ -45,8 +49,10 @@ export default {
         }),
       })
 
+      const data = await response.json()
       if (response.ok) {
         console.log('created document')
+        this.$router.push('editor/' + data['_id'])
       } else {
         console.log('failed to create doc')
       }
