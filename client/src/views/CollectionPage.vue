@@ -4,7 +4,7 @@
       Get Documents
     </button>
   </div>
-  <div v-for="document in documents">
+  <div v-for="document in documents" :key="document._id">
     <div
       class="grid place-items-center gap-4 rounded-xl bg-background-sidebar py-12 drop-shadow-2xl"
     >
@@ -36,6 +36,9 @@ export default {
         console.log(data)
       }
     },
+  },
+  mounted() {
+    this.getDocuments()
   },
 }
 </script>
