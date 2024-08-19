@@ -30,9 +30,14 @@ def createDocument():
 def viewDocuments(): 
     if 'user' not in session: 
         return jsonify({'message': 'Unauthorized'}), 401
-    userDocuments = mongo.db.documents.find({'owner': session['user']}, projection = {"_id": False})
-    userDocList = list(userDocuments)
-    print(userDocList)
+    
+    userDocuments = mongo.db.documents.find({'owner': session['user']})
+    userDocList = []
+
+    for doc in userDocuments: 
+        doc['_id'] = str(doc['_id'])
+        userDocList.append(doc)
+
     return jsonify(userDocList), 200
 
 @app.route('/register', methods=['POST'])
