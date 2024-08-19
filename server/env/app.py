@@ -4,6 +4,7 @@ from dotenv import dotenv_values
 from flask_pymongo import PyMongo 
 from datetime import timedelta
 from uuid import uuid4
+from bson import ObjectId
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -39,6 +40,21 @@ def viewDocuments():
         userDocList.append(doc)
 
     return jsonify(userDocList), 200
+
+@app.route('/getDocument/<document_id>', methods=['GET'])
+@cross_origin(supports_credentials=True)
+def getDocument(document_id): 
+    if 'user' not in session: 
+        return jsonify({'message': 'Must be logged in'}), 401
+
+    document_id = ObjectId(document_id)
+    document = mongo.db.documents.find_one({'_id': document_id})
+
+    if document is None: 
+        return jsonify({'message': 'Document not found'}), 404
+
+    document['_id'] = str(document['_id'])
+    return jsonify(document), 200
 
 @app.route('/register', methods=['POST'])
 def register(): 
