@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen overflow-hidden">
+  <div class="h-screen">
     <NavBar />
     <RouterView />
   </div>
