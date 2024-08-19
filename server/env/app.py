@@ -2,7 +2,6 @@ from flask import Flask, jsonify, render_template_string, render_template, reque
 from flask_cors import CORS, cross_origin
 from dotenv import dotenv_values
 from flask_pymongo import PyMongo 
-from datetime import timedelta
 from uuid import uuid4
 from bson import ObjectId
 
@@ -23,8 +22,8 @@ def createDocument():
     content = req.get('content')
     title = req.get('title')
     document = {'title': title, 'content': content, 'owner': session.get('user')}
-    mongo.db.documents.insert_one(document)
-    return jsonify({'message': 'Document created'}), 201
+    result = mongo.db.documents.insert_one(document)
+    return jsonify({'_id': str(result.inserted_id), 'message': 'Document created'}), 201
 
 @app.route('/viewDocuments', methods=['GET'])
 @cross_origin(supports_credentials=True)
