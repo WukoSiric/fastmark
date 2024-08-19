@@ -6,6 +6,7 @@
       class="col-span-1"
       :title="document.title"
       :content="document.content"
+      :id="document._id"
     />
   </div>
 </template>
